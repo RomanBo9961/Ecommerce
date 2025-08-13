@@ -3,15 +3,20 @@ package com.sena.ecommerce.model;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 // anotaciones jpa
+
 @Entity
 @Table(name = "usuarios")
-@IdClass
+
 public class Usuario {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
 	private String username;
@@ -22,9 +27,11 @@ public class Usuario {
 	private String password;
 	private String tipo; // admin & user
 	
+	@OneToMany(mappedBy = "usuario")
 	private List<Producto>productos;
 	
-	private List<Orden>ordenes;
+	@OneToMany(mappedBy = "usuario")
+	private List<Orden> ordenes;
 	
 	//metodo constructor vacio
 	
