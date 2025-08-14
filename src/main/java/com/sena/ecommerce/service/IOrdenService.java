@@ -14,11 +14,11 @@ public interface IOrdenService {
 		
 		public Optional<Orden> get(Integer id);
 		
-		public List<Producto> findAll();
+		public List<Orden> findAll();
 		
 		public List<Orden> findByUsuario(Usuario usuario);
 		
 		public String generarNumeroOrden();
-	}
+	
 
 }

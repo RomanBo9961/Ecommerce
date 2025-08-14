@@ -1,5 +1,6 @@
 package com.sena.ecommerce.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,15 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sena.ecommerce.model.Orden;
-import com.sena.ecommerce.model.Producto;
 import com.sena.ecommerce.model.Usuario;
+import com.sena.ecommerce.repository.IOrdenRepository;
 
 @Service
 
 public class OrdenServiceImplement implements IOrdenService{
 
+
 	@Autowired
-	private IOrednRepository ordenRepository;
+	private IOrdenRepository ordenRepository;
 	
 	@Override
 	public Orden save(Orden orden) {
@@ -30,7 +32,7 @@ public class OrdenServiceImplement implements IOrdenService{
 	}
 
 	@Override
-	public List<Producto> findAll() {
+	public List<Orden> findAll() {
 		// TODO Auto-generated method stub
 		return ordenRepository.findAll();
 	}
@@ -61,11 +63,12 @@ public class OrdenServiceImplement implements IOrdenService{
 		ordenes.stream().forEach(o -> numeros.add(Integer.parseInt(o.getNumero())));
 		
 		// validación
+		
 		if(ordenes.isEmpty()) {
 			numero=1;
 			
-		}else {
-			numero = numeros.stream().max((Integer::compare).get();
+		} else {
+			numero = numeros.stream().max(Integer::compare).get();
 			numero++;
 		}
 		if (numero < 10) {
@@ -78,7 +81,7 @@ public class OrdenServiceImplement implements IOrdenService{
 		
 		}
 		
-		return numeroconcatenado;
+		return numeroConcatenado;
 	}
 
 }

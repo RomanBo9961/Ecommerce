@@ -10,7 +10,7 @@ import com.sena.ecommerce.repository.IProductoRepository;
 
 @Service
 
-public class ProdcutoServiceImplement implements IProductoService{
+public class ProductoServiceImplement implements IProductoService{
 
 	
 	private IProductoRepository productoRepository;

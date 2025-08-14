@@ -10,10 +10,7 @@ import com.sena.ecommerce.model.Usuario;
 
 @Repository
 
-public interface IOrdenRepository {
-
-	public interface IUsuarioRepository extends JpaRepository<Orden, Integer>{
+public interface IOrdenRepository  extends JpaRepository<Orden, Integer>{
 		
 	List<Orden> findByUsuario(Usuario usuario);
-}
 }
