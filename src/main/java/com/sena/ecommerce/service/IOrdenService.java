@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.sena.ecommerce.model.Orden;
-import com.sena.ecommerce.model.Producto;
 import com.sena.ecommerce.model.Usuario;
 
 public interface IOrdenService {

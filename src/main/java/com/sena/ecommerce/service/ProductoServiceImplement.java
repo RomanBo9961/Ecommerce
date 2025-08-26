@@ -3,17 +3,18 @@ package com.sena.ecommerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sena.ecommerce.model.Producto;
 import com.sena.ecommerce.repository.IProductoRepository;
 
 @Service
-
 public class ProductoServiceImplement implements IProductoService{
 
-	
+	@Autowired
 	private IProductoRepository productoRepository;
+	
 	@Override
 	public Producto save(Producto producto) {
 		// TODO Auto-generated method stub
