@@ -8,16 +8,14 @@ import com.sena.ecommerce.model.Usuario;
 
 public interface IOrdenService {
 
-		
-		public Orden save(Orden orden);
-		
-		public Optional<Orden> get(Integer id);
-		
-		public List<Orden> findAll();
-		
-		public List<Orden> findByUsuario(Usuario usuario);
-		
-		public String generarNumeroOrden();
-	
+	public Orden save(Orden orden);
+
+	public Optional<Orden> findById(Integer id);
+
+	public List<Orden> findAll();
+
+	public List<Orden> findByUsuario(Usuario usuario);
+
+	public String generarNumeroOrden();
 
 }

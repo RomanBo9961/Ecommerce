@@ -2,23 +2,22 @@
 <html lang="es" xmlns:th="http://thymeLeaf.org">
 
 <head th:insert="~{usuario/template_user.html::head}"></head>
-<div th:insert="~{usuario/template_user.html::headerLogout}">
-</div>
 
 <body>
-	<!-- Hero Section -->
-	<section class="hero-section">
+	<div th:insert="~{usuario/template_user.html::headerLogout}" th:if="${sesion == null}"></div>
+	<div th:insert="~{usuario/template_user.html::headerLogin}" th:unless="${sesion == null}"></div>
 
-	</section>
+	<!-- Hero Section -->
+	<!--	<section class="hero-section">-->
+	<!--	</section>-->
 
 	<!-- Carrusel de Promociones -->
 	<section class="container mb-5">
-
 	</section>
 
 	<!-- Productos -->
 	<section class="container mb-5" id="productos">
-		<h2 class="section-title">Productos Destacados</h2>
+		<h2 class="section-title">Spring eCommerce producto</h2>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
@@ -26,7 +25,7 @@
 			</ol>
 		</nav>
 		<div class="card mb-4">
-			<div clas="card body">
+			<div class="card-body">
 				<div class="row">
 					<div class="col-lg-6">
 						<a href="#">
@@ -35,17 +34,17 @@
 						</a>
 					</div>
 					<div class="col-lg-6">
-						<form action="@{/cart}" method="post">
-							<input type="hidden" th:value="${producto.id}" name="id">
-							<h2 clas="card-title" text="${producto.nombre}"></h2>
+						<form th:action="@{/cart}" method="post">
+							<input type="hidden" th:value="${producto.id}" name="id" id="id">
+							<h2 class="card-title" th:text="${producto.nombre}"></h2>
 							<ul class="list-group">
 								<li class="list-group-item">
-									<h5
-										th:text="'Precio: '+${#strings.concat('$', #numbers.formatDecimal(producto.precio, 0, 'POINT', 0, 'POINT'))}">
+									<h5 th:text="'Precio: ' + ${#strings.concat('$', #numbers.formatDecimal
+												(producto.precio, 0, 'POINT', 0, 'POINT'))}">
 									</h5>
 								</li>
 								<li class="list-group-item">
-									<p th:text="'Descripción: '+${producto.descripcion}"></p>
+									<p th:text="'Descripción: ' + ${producto.descripcion}"></p>
 								</li>
 								<li class="list-group-item">
 									<h6>
@@ -53,285 +52,12 @@
 											min="1" th:max="${producto.cantidad}" value="1">
 									</h6>
 								</li>
-								</li>
-								<button type="submit" class="btn btn-dark">Añadir al carrito </button>
+							</ul>
+							<br>
+							<button type="submit" class="btn btn-secondary">Añadir al Carrito</button>
 						</form>
 					</div>
 					<div></div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- DataTable de Productos -->
-	<section class="container mb-5">
-		<h2 class="section-title">Catálogo Completo</h2>
-		<div class="card">
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-hover" id="miTabla" style="width:100%">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Producto</th>
-								<th>Categoría</th>
-								<th>Precio</th>
-								<th>Disponibilidad</th>
-								<th>Acciones</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>001</td>
-								<td>Smartphone Pro X</td>
-								<td>Electrónicos</td>
-								<td>$599.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>002</td>
-								<td>Reloj Inteligente</td>
-								<td>Electrónicos</td>
-								<td>$199.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>003</td>
-								<td>Auriculares Premium</td>
-								<td>Electrónicos</td>
-								<td>$149.99</td>
-								<td>Agotado</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>004</td>
-								<td>Zapatillas Deportivas</td>
-								<td>Ropa</td>
-								<td>$89.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>005</td>
-								<td>Set de Cocina Premium</td>
-								<td>Hogar</td>
-								<td>$249.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>006</td>
-								<td>Tablet Ultra HD</td>
-								<td>Electrónicos</td>
-								<td>$349.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>007</td>
-								<td>Camiseta Algodón Orgánico</td>
-								<td>Ropa</td>
-								<td>$29.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>008</td>
-								<td>Mochila Impermeable</td>
-								<td>Accesorios</td>
-								<td>$59.99</td>
-								<td>Agotado</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>009</td>
-								<td>Smart TV 55" 4K</td>
-								<td>Electrónicos</td>
-								<td>$699.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>010</td>
-								<td>Set de Jardinería</td>
-								<td>Hogar</td>
-								<td>$79.99</td>
-								<td>En stock</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-							<tr>
-								<td>011</td>
-								<td>Set de Jardinería</td>
-								<td>Hogar</td>
-								<td>$79.99</td>
-								<td>Agotado</td>
-								<td>
-									<button class="btn btn-sm btn-primary">Ver</button>
-									<button class="btn btn-sm btn-outline-primary">Editar</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Formulario de Contacto -->
-	<section class="container mb-5">
-		<h2 class="section-title">Contáctanos</h2>
-		<div class="row">
-			<div class="col-md-6">
-				<form>
-					<div class="mb-3">
-						<label for="name" class="form-label">Nombre</label>
-						<input type="text" class="form-control" id="name" placeholder="Tu nombre completo" required>
-					</div>
-					<div class="mb-3">
-						<label for="email" class="form-label">Email</label>
-						<input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
-					</div>
-					<div class="mb-3">
-						<label for="subject" class="form-label">Asunto</label>
-						<input type="text" class="form-control" id="subject" placeholder="Asunto del mensaje" required>
-					</div>
-					<div class="mb-3">
-						<label for="message" class="form-label">Mensaje</label>
-						<textarea class="form-control" id="message" rows="4" placeholder="Escribe tu mensaje aquí..."
-							required></textarea>
-					</div>
-					<button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-				</form>
-			</div>
-			<div class="col-md-6">
-				<div class="card h-100">
-					<div class="card-body">
-						<h5 class="card-title">Información de Contacto</h5>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">
-								<i class="bi bi-geo-alt me-2"></i> Calle Principal 123, Ciudad
-							</li>
-							<li class="list-group-item">
-								<i class="bi bi-telephone me-2"></i> +57 311 555 00 57
-							</li>
-							<li class="list-group-item">
-								<i class="bi bi-envelope me-2"></i> info@purpleshop.com
-							</li>
-							<li class="list-group-item">
-								<i class="bi bi-clock me-2"></i> Lunes a Viernes: 9:00 - 18:00
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Formulario de Registro -->
-	<section class="container mb-5">
-		<h2 class="section-title">Registro de Usuario</h2>
-		<div class="row justify-content-center">
-			<div class="col-md-8">
-				<div class="card">
-					<div class="card-body">
-						<form>
-							<div class="row mb-3">
-								<div class="col-md-6">
-									<label for="firstName" class="form-label">Nombre</label>
-									<input type="text" class="form-control" id="firstName" placeholder="Tu nombre"
-										required>
-								</div>
-								<div class="col-md-6">
-									<label for="lastName" class="form-label">Apellido</label>
-									<input type="text" class="form-control" id="lastName" placeholder="Tu apellido"
-										required>
-								</div>
-							</div>
-							<div class="mb-3">
-								<label for="email" class="form-label">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com"
-									required>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6">
-									<label for="password" class="form-label">Contraseña</label>
-									<input type="password" class="form-control" id="password"
-										placeholder="Crea una contraseña" required>
-								</div>
-								<div class="col-md-6">
-									<label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-									<input type="password" class="form-control" id="confirmPassword"
-										placeholder="Repite tu contraseña" required>
-								</div>
-							</div>
-							<div class="mb-3">
-								<label for="address" class="form-label">Dirección</label>
-								<input type="text" class="form-control" id="address" placeholder="Tu dirección completa"
-									required>
-							</div>
-							<div class="row mb-3">
-								<div class="col-md-6">
-									<label for="city" class="form-label">Ciudad</label>
-									<input type="text" class="form-control" id="city" placeholder="Tu ciudad" required>
-								</div>
-								<div class="col-md-3">
-									<label for="zip" class="form-label">Código Postal</label>
-									<input type="text" class="form-control" id="zip" placeholder="Código postal"
-										required>
-								</div>
-								<div class="col-md-3">
-									<label for="country" class="form-label">País</label>
-									<select class="form-select" id="country">
-										<option selected>Seleccionar</option>
-										<option>España</option>
-										<option>México</option>
-										<option>Argentina</option>
-										<option>Colombia</option>
-										<option>Chile</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-check mb-3">
-								<input class="form-check-input" type="checkbox" id="terms">
-								<label class="form-check-label" for="terms">
-									Acepto los términos y condiciones
-								</label>
-							</div>
-							<button type="submit" class="btn btn-primary w-100">Registrarse</button>
-						</form>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -341,5 +67,3 @@
 
 	<div th:insert="~{usuario/template_user.html::jsFiles}"></div>
 </body>
-
-</html>

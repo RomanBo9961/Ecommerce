@@ -45,27 +45,30 @@
 										<th scope="col">Accion</th>
 									</tr>
 								</thead>
-								<tr th:each="producto:${productos}">
-									<td th:text="${producto.nombre}"></td>
-									<td th:text="${producto.descripcion}"></td>
-									<td th:text="${producto.cantidad}"></td>
-									<td th:text="${#strings.concat('$', #numbers.formatDecimal
+								<tbody>
+									<tr th:each="producto:${productos}">
+										<td th:text="${producto.nombre}"></td>
+										<td th:text="${producto.descripcion}"></td>
+										<td th:text="${producto.cantidad}"></td>
+										<td th:text="${#strings.concat('$', #numbers.formatDecimal
 										(producto.precio, 0, 'POINT', 0, 'POINT'))}">
-									</td>
+										</td>
 
-									<td><a title="Editar" class="btn btn-warning"
-											th:href="@{productos/edit/{id} (id=${producto.id})}"><i
-												class="bi bi-pencil-square"></i>Editar</a></td>
-									<td><a title="Eliminar" class="btn btn-danger"
-											th:href="@{productos/delete/{id} (id=${producto.id})}"><i
-												class="bi bi-file-earmark-x"></i>Eliminar</a></td>
-									</td>
-								</tr>
-								<tbody></tbody>
+										<td><a title="Editar" class="btn btn-warning"
+												th:href="@{productos/edit/{id} (id=${producto.id})}"><i
+													class="bi bi-pencil-square"></i>Editar</a></td>
+										<td><a title="Eliminar" class="btn btn-danger"
+												th:href="@{productos/delete/{id} (id=${producto.id})}"><i
+													class="bi bi-file-earmark-x"></i>Eliminar</a></td>
+										</td>
+									</tr>
+								</tbody>
 							</table>
+
 						</div>
 					</div>
 				</div>
+			</div>
 
 		</section>
 
